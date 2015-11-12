@@ -1,19 +1,27 @@
-apply plugin: 'axelor-app'
+buildscript {
+	apply from: "gradle/adk.gradle"
+	dependencies {
+		classpath adkPlugins()
+	}
+}
 
 // find all modules
 def modules = new File('modules').listFiles().findAll { dir ->
 	new File(dir, 'build.gradle').exists() && !dir.name.endsWith('-tests')
 }
 
+apply plugin: "axelor-app"
+apply plugin: "groovy"
+
 application {
 
 	name "axelor-demo"
-	title "Axelor :: Demo Application"
-	
-	version "3.0.19"
+	title "Axelor :: DEMO"
+
+	version "4.0.0"
 
 	// ADK version required
-	adkVersion "~3.0.0"
+	adkVersion "~4.0.0"
 
 	// depends on all modules
 	modules.each { dir ->
@@ -31,5 +39,9 @@ tomcat {
 	stopPort = 9451
 }
 
-// Link core projects, easy to develop along with core
-ext.linkCoreInEclipse = true
+// link adk projects in eclipse
+allprojects {
+	eclipse {
+		adkLinks()
+	}
+}

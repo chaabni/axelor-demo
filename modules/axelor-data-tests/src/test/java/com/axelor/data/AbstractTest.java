@@ -15,15 +15,19 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.axelor.contact;
+package com.axelor.data;
 
-import com.axelor.db.JpaModule;
-import com.google.inject.AbstractModule;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class TestModule extends AbstractModule {
+import com.axelor.db.EntityHelper;
+import com.axelor.test.GuiceModules;
+import com.axelor.test.GuiceRunner;
 
-	@Override
-	protected void configure() {
-		install(new JpaModule("testUnit"));
-	}
+@RunWith(GuiceRunner.class)
+@GuiceModules(DataModule.class)
+public abstract class AbstractTest {
+
+	protected final Logger log = LoggerFactory.getLogger(EntityHelper.getEntityClass(this));
 }

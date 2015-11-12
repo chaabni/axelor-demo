@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <object-views xmlns="http://axelor.com/xml/ns/object-views"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_3.0.xsd">
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_4.0.xsd">
 
-  <menuitem name="menu-contact-book" priority="100" title="Address Book" icon="img/address-book.png"/>
+  <menuitem name="menu-contact-book" order="-100" title="Address Book" icon="fa-book"/>
 
   <menuitem name="menu-contact-all" parent="menu-contact-book"
     title="All Contacts"
     action="contact.all"/>
 
   <action-view name="contact.all" title="Contacts" model="com.axelor.contact.db.Contact">
-    <view type="grid" name="contact-grid"/>
+    <view type="cards" name="contact-cards"/>
     <view type="form" name="contact-form"/>
+    <context name="json-enhance" expr="true"/>
   </action-view>
 
   <menuitem name="menu-contact-friends" parent="menu-contact-book"
@@ -48,7 +49,7 @@
   </action-view>
 
   <menuitem name="menu-contact-config" parent="menu-contact-book"
-    title="Configuration" icon="img/wrench.png"/>
+    title="Configuration"/>
 
   <menuitem name="menu-contact-country" parent="menu-contact-config"
     title="Country"

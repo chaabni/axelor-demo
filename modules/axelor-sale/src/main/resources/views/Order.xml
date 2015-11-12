@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <object-views xmlns="http://axelor.com/xml/ns/object-views"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_3.0.xsd">
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_4.0.xsd">
 
   <grid name="order-grid" title="Orders" model="com.axelor.sale.db.Order">
     <field name="name"/>
@@ -23,7 +23,9 @@
       <field name="confirmDate" requiredIf="confirmed" validIf="confimDate == null || $moment(confirmDate) > $moment(createDate)"/>
     </panel>
     <panel-tabs>
-      <panel-related field="items" editable="true" readonlyIf="confirmed" onChange="com.axelor.sale.web.SaleOrderController:calculate">
+      <panel-related field="items" editable="true" readonlyIf="confirmed"
+        orderBy="sequence" canMove="true"
+        onChange="com.axelor.sale.web.SaleOrderController:calculate">
         <field name="product"/>
         <field name="price"/>
         <field name="quantity"/>
@@ -53,6 +55,10 @@
         </field>
       </panel>
     </panel>
+    <panel-mail>
+      <mail-messages limit="4" />
+      <mail-followers />
+    </panel-mail>
   </form>
 
   <calendar name="sales-timeline" title="Sales Timeline" model="com.axelor.sale.db.Order" editable="false"

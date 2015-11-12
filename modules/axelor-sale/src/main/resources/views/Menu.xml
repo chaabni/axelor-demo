@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <object-views xmlns="http://axelor.com/xml/ns/object-views"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_3.0.xsd">
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_4.0.xsd">
 
-  <menuitem name="menu-sales" priority="90"
-    title="Sales Management" icon="img/baggage-cart-box.png"/>
+  <menuitem name="menu-sales" order="-90"
+    title="Sales Management" icon="fa-shopping-cart"/>
 
   <menuitem name="menu-sales-order" parent="menu-sales"
     title="Sale Orders"
@@ -34,7 +34,7 @@
     <view type="search" name="sale-order-search"/>
   </action-view>
 
-  <menuitem name="menu-sales-config" parent="menu-sales" title="Configuration" icon="img/wrench.png"/>
+  <menuitem name="menu-sales-config" parent="menu-sales" title="Configuration"/>
 
   <menuitem name="menu-sales-product-category" parent="menu-sales-config"
     title="Product Categories"
